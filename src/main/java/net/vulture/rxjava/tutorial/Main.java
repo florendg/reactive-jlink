@@ -1,17 +1,18 @@
 package net.vulture.rxjava.tutorial;
 
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
 
-import java.util.concurrent.TimeUnit;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
+
 
 public class Main {
+   private static final System.Logger LOGGER = System.getLogger(Main.class.getName());
    public static void main(String[] args) {
-      Flowable.just("Hello World")
-            //.delaySubscription(10, TimeUnit.SECONDS)
-            .subscribe(System.out::println).dispose();
-      var obs = Observable.just("Hello");
-      var sub = obs.subscribe(System.out::println);
-      sub.dispose();
+
+      Observable<String> obs = Flowable.just("Hello World").toObservable();
+      obs.subscribe(next-> LOGGER.log(System.Logger.Level.INFO,next),
+              error-> LOGGER.log(System.Logger.Level.ERROR,error),
+              ()-> LOGGER.log(System.Logger.Level.INFO,"finished")).dispose();
+
    }
 }

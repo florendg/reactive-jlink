@@ -1,3 +1,3 @@
 module net.vulture.rxjava.tutorial {
-   requires io.reactivex.rxjava2;
+   requires io.reactivex.rxjava3;
 }
