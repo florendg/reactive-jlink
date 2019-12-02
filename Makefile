@@ -21,9 +21,9 @@ patch-jars: generate-module-info
 	javac -p target/dependency --patch-module org.reactivestreams=target/dependency/reactive-streams-1.0.3.jar target/module-descriptors/org.reactivestreams/module-info.java
 	mv target/module-descriptors/org.reactivestreams/module-info.class .
 	jar --update --file target/dependency/reactive-streams-1.0.3.jar module-info.class
-	javac -p target/dependency --patch-module io.reactivex.rxjava3=target/dependency/rxjava-3.0.0-RC3.jar target/module-descriptors/io.reactivex.rxjava3/module-info.java
+	javac -p target/dependency --patch-module io.reactivex.rxjava3=target/dependency/rxjava-3.0.0-RC5.jar target/module-descriptors/io.reactivex.rxjava3/module-info.java
 	mv target/module-descriptors/io.reactivex.rxjava3/module-info.class .
-	jar --update --file target/dependency/rxjava-3.0.0-RC3.jar module-info.class
+	jar --update --file target/dependency/rxjava-3.0.0-RC5.jar module-info.class
 	rm module-info.class
 jlink: clean compile patch-jars
 	jlink @jlink.cfg
